@@ -4,10 +4,10 @@ extends BinaryTreeBasis<T> {
 	// inherits isEmpty(), makeEmpty(), getRootItem(), and
 	// the use of the constructors from BinaryTreeBasis
 
-	public BinarySearchTree() {
+	public MyBinarySearchTree() {
 	}  // end default constructor
 
-	public BinarySearchTree(T rootItem) {
+	public MyBinarySearchTree(T rootItem) {
 		super(rootItem);
 	}  // end constructor
 
@@ -20,8 +20,20 @@ extends BinaryTreeBasis<T> {
 		root = insertItem(root, newItem);
 	}  // end insert
 
-	public T retrieve(KT searchKey) {
-
+	public T retrieve(KT searchKey){
+		TreeNode<T> currentNode = root;
+		while((searchKey!=currentNode.getItem().getKey()) || (currentNode!=null)){
+			if(currentNode.getItem().getKey().compareTo(searchKey)<0){
+				currentNode = currentNode.getLeftChild();
+			}
+			else{
+				currentNode = currentNode.getRightChild();
+			}
+		}
+		if(currentNode==null){
+			return null;
+		}
+		return currentNode.getItem();
 		//implement iteratively
 	}  // end retrieve
 
@@ -122,20 +134,12 @@ extends BinaryTreeBasis<T> {
 		}  // end if
 	}  // end deleteNode
 
-	protected T findLeftmost(TreeNode<T> tNode)  {
-		boolean flag = false;
-		T tN = null;
-		
-		while(flag==false){
-			if(tNode.getLeftChild()==null){
-				tN = tNode.getLeftChild().getItem(); 
-				flag=true;
-			}
-			else{
-				tN = tNode.getLeftChild().getItem();
-			}
+	protected T findLeftmost(TreeNode<T> tNode)  {	
+		while(tNode.getLeftChild()!=null){
+			tNode = tNode.getLeftChild();
 		}
-		return tN;
+
+		return tNode.getLeftChild().getItem();
 	}  // end findLeftmost
 
 	protected TreeNode<T> deleteLeftmost(TreeNode<T> tNode) {
