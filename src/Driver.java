@@ -58,9 +58,12 @@ public class Driver {
 						break;
 						
 				case 5: 
+						System.out.println("The Binary tree size is: " + MBST.getSize());						
+						break;
+						
+				case 6: 
 						
 						break;
-				case 6: break;
 				case 7: break;
 				case 8: break;
 				case 9: break;
