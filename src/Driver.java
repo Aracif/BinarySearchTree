@@ -6,7 +6,8 @@ public class Driver {
 
 	public static void main(String[] args){
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-		MyBinarySearchTree MBST = new MyBinarySearchTree();
+		MyBinarySearchTreePlus<KeyedItem<Integer>,Integer> MBST = new MyBinarySearchTreePlus();
+		
 		while(true){
 			System.out.println("\t1.  Insert key in BST");
 			System.out.println("\t2.  Delete key from BST");
@@ -20,11 +21,28 @@ public class Driver {
 			System.out.println("\t10. Exit program");
 
 			try{
-				switch(Integer.parseInt(read.readLine())){
-				
-				case 1: break;
+				switch(Integer.parseInt(read.readLine())){			
+				case 1: 
+						Integer currentKey = Integer.parseInt(read.readLine());
+						System.out.println("Enter key to insert into tree : ");
+						TreeNode<KeyedItem<Integer>> newNode;
+						
+						if(MBST.root==null){
+							newNode = new TreeNode(currentKey);
+							MBST.root = newNode;
+						}
+						else{
+							newNode = new TreeNode(currentKey);
+							MBST.insertItem(newNode, newNode);
+						}
+						
+						break;
 				case 2: break;
 				case 3: break;
+				
+				case 4: 
+						System.out.println("The binary tree height is : " + MBST.getHeight());
+						break;
 				case 5: break;
 				case 6: break;
 				case 7: break;

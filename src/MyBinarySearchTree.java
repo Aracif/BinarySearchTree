@@ -22,8 +22,14 @@ extends BinaryTreeBasis<T> {
 
 	public T retrieve(KT searchKey){
 		TreeNode<T> currentNode = root;
-		while((searchKey!=currentNode.getItem().getKey()) || (currentNode!=null)){
-			if(currentNode.getItem().getKey().compareTo(searchKey)<0){
+		boolean notFound = true;
+		int compareValue;
+		while(notFound && currentNode!=null){
+			compareValue = currentNode.getItem().getKey().compareTo(searchKey);
+			if(compareValue==0){
+				notFound = false;
+			}
+			else if(compareValue<0){
 				currentNode = currentNode.getLeftChild();
 			}
 			else{
