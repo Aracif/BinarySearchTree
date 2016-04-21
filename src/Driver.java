@@ -25,14 +25,12 @@ public class Driver {
 				case 1: 
 						String currentKey = read.readLine();
 						System.out.println("Enter key to insert into tree : ");
-						TreeNode<Data> newNode;
-						
+						TreeNode<Data> newNode;						
 						if(MBST.root==null){
 							newNode = new TreeNode(new Data(currentKey));
 							MBST.root = newNode;
 						}
-						else{
-							newNode = new TreeNode(currentKey);
+						else{							
 							MBST.insert(new Data(currentKey));
 						}
 						
