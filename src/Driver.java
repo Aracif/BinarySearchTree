@@ -6,7 +6,7 @@ public class Driver {
 
 	public static void main(String[] args){
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-		MyBinarySearchTreePlus<KeyedItem<Integer>,Integer> MBST = new MyBinarySearchTreePlus();
+		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
 		
 		while(true){
 			System.out.println("\t1.  Insert key in BST");
@@ -23,17 +23,17 @@ public class Driver {
 			try{
 				switch(Integer.parseInt(read.readLine())){			
 				case 1: 
-						Integer currentKey = Integer.parseInt(read.readLine());
+						String currentKey = read.readLine();
 						System.out.println("Enter key to insert into tree : ");
-						TreeNode<KeyedItem<Integer>> newNode;
+						TreeNode<Data> newNode;
 						
 						if(MBST.root==null){
-							newNode = new TreeNode(currentKey);
+							newNode = new TreeNode(new Data(currentKey));
 							MBST.root = newNode;
 						}
 						else{
 							newNode = new TreeNode(currentKey);
-							MBST.insertItem(newNode, newNode);
+							MBST.insert(new Data(currentKey));
 						}
 						
 						break;
