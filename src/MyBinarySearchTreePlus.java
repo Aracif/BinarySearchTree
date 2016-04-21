@@ -2,20 +2,27 @@
 public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparable<? super KT>> extends MyBinarySearchTree<T,KT> implements BSTPInterface{
 
 	public int getHeight(){
-		int level = 1;
-		TreeNode<T> currentNode = root;
-		if(currentNode.getLeftChild()==null && currentNode.getRightChild()==null){
-			level++;
-		}
-		else if(currentNode.getLeftChild()!=null){
-			currentNode = currentNode.getLeftChild();
-			getHeight();
+		if(root==null){
+			return 1;
 		}
 		else{
-			currentNode = currentNode.getRightChild();
-			getHeight();		
+		return getHeight(root.getLeftChild(),0)>getHeight(root.getRightChild(),0)
+				?getHeight(root.getLeftChild(),1)+1
+				:getHeight(root.getRightChild(),1)+1;
 		}
-		return level;
+	}
+	
+	private int getHeight(TreeNode<T> node, int level){
+		if(node.getLeftChild()==null && node.getRightChild()==null){
+			++level;
+		}
+		else if(node.getLeftChild()!=null){
+			getHeight(node.getLeftChild(), ++level);
+		}
+		else if(node.getRightChild()!=null){
+			getHeight(node.getRightChild(), ++level);
+		}
+		return level;	
 	}
 
 	public int getSize(){

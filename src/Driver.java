@@ -7,6 +7,11 @@ public class Driver {
 	public static void main(String[] args){
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
+		MBST.insert(new Data("Sal Ficara"));
+		MBST.insert(new Data("Steve Smith"));
+		MBST.insert(new Data("Ben Ficara"));
+		MBST.insert(new Data("Kristi Ficara"));
+		MBST.insert(new Data("Thien"));
 		
 		while(true){
 			System.out.println("\t1.  Insert key in BST");
@@ -27,7 +32,7 @@ public class Driver {
 						System.out.println("Enter key to insert into tree : ");
 						TreeNode<Data> newNode;						
 						if(MBST.root==null){
-							newNode = new TreeNode(new Data(currentKey));
+							newNode = new TreeNode<Data>(new Data(currentKey));
 							MBST.root = newNode;
 						}
 						else{							
@@ -35,13 +40,26 @@ public class Driver {
 						}
 						
 						break;
-				case 2: break;
-				case 3: break;
+				case 2: 
+						System.out.println("Enter a key to remove: ");
+						String removeKey = read.readLine();
+						MBST.delete(removeKey);
+						System.out.println("The key " + removeKey + " has been removed");
+						break;
+				case 3: 
+						System.out.println("Enter a key to search for: ");
+						String searchKey = read.readLine();
+						Data n = MBST.retrieve(searchKey);
+						System.out.println("The key " + n.getKey() + " has been found");
+						break;
 				
 				case 4: 
 						System.out.println("The binary tree height is : " + MBST.getHeight());
 						break;
-				case 5: break;
+						
+				case 5: 
+						
+						break;
 				case 6: break;
 				case 7: break;
 				case 8: break;
