@@ -3,17 +3,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Driver {
+	
+	/*
+	 * Purpose: Data Structure and Algorithms Lab 11 Problems 1, 2, and 3
+	 * Status: Complete and thoroughly tested
+	 * Last update: 04/22/16
+	 * Submitted:  04/22/16
+	 * Comment: test suite and sample run attached
+	 * @author: Sal Ficara
+	 * @version: V1
+	 */
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws NumberFormatException, IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
-		MBST.insert(new Data("Sal Ficara"));
-		MBST.insert(new Data("Steve Smith"));
-		MBST.insert(new Data("Ben Ficara"));
-		MBST.insert(new Data("Kristi Ficara"));
-		MBST.insert(new Data("Thien"));
+		MBST.insert(new Data("S"));
+		MBST.insert(new Data("A"));
+		MBST.insert(new Data("B"));
+		MBST.insert(new Data("K"));
+		MBST.insert(new Data("H"));
+		MBST.insert(new Data("W"));
+		MBST.insert(new Data("R"));
+		MBST.insert(new Data("L"));
+		MBST.insert(new Data("Z"));
 		
 		while(true){
+			Integer select = Integer.parseInt(read.readLine());
 			System.out.println("\t1.  Insert key in BST");
 			System.out.println("\t2.  Delete key from BST");
 			System.out.println("\t3.  Search for key in BST");
@@ -24,9 +39,10 @@ public class Driver {
 			System.out.println("\t8.  Display content of BST in postorder");
 			System.out.println("\t9.  Build copy of the tree, and test it");
 			System.out.println("\t10. Exit program");
+			System.out.println("Make a selection: " + select);
 
 			try{
-				switch(Integer.parseInt(read.readLine())){			
+				switch(select){			
 				case 1: 
 						String currentKey = read.readLine();
 						System.out.println("Enter key to insert into tree : ");
@@ -41,8 +57,8 @@ public class Driver {
 						
 						break;
 				case 2: 
-						System.out.println("Enter a key to remove: ");
 						String removeKey = read.readLine();
+						System.out.println("Enter a key to remove: ");						
 						MBST.delete(removeKey);
 						System.out.println("The key " + removeKey + " has been removed");
 						break;
@@ -75,9 +91,12 @@ public class Driver {
 						MBST.toStringPostorder());
 						break;
 						
-				case 9: break;
+				case 9: 						
+						break;
 				
-				case 10: System.exit(0); 
+				case 10: 
+						System.out.println("Goodbye");
+						System.exit(0); 
 						 break;
 
 
