@@ -34,6 +34,8 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 		return level;	
 	}
 
+	//No helper method required, we can use getHeight method
+	//to accomplish this
 	public int getSize(){
 		int leftHeight = 0;
 		int rightHeight = 0;
@@ -60,6 +62,7 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 		return root.getItem().getKey() + s1 + s2;
 	}
 	
+	//toStringPreOrder helper method
 	private String toStringPreOrder(TreeNode<T> node, String s){
 		if(node.getLeftChild()==null && node.getRightChild()==null){
 			s += (String)node.getItem().getKey();
@@ -74,11 +77,55 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 	}
 
 	public String toStringInorder(){
-		return null;
+		String s1 = "";
+		String s2 = "";
+		if(root.getLeftChild()!=null){
+			s1 += toStringInorder(root.getLeftChild(), s1);
+		}
+		if(root.getRightChild()!=null){
+			s2 += toStringInorder(root.getRightChild(), s2);
+		}		
+		return s1 + " " + root.getItem().getKey() +  s2;
 	}
+	//toStringInOrderHelper
+	private String toStringInorder(TreeNode<T> node, String s){
+		if(node.getLeftChild()==null && node.getRightChild()==null){
+			s += (String)node.getItem().getKey();
+		}
+		else if(node.getLeftChild()!= null){
+			toStringInorder(node.getLeftChild(),  "");
+		}
+		else if(node.getRightChild()!=null){
+			s += toStringInorder(node.getRightChild(),  " " + (String)node.getItem().getKey() + " ");		
+		}	
+		return s;
+	}
+	
 
 	public String toStringPostorder(){
-		return null;
+		String s1 = "";
+		String s2 = "";
+		if(root.getLeftChild()!=null){
+			s1 += toStringInorder(root.getLeftChild(), s1);
+		}
+		if(root.getRightChild()!=null){
+			s2 += toStringInorder(root.getRightChild(), s2);
+		}		
+		return s1 +  s2 + " " + root.getItem().getKey();
+		
+	}
+	
+	private String toStringPostorder(TreeNode<T> node, String s){
+		if(node.getLeftChild()==null && node.getRightChild()==null){
+			s += (String)node.getItem().getKey();
+		}
+		else if(node.getLeftChild()!=null){
+			toStringPostorder(node.getLeftChild(), "");
+		}
+		else if(node.getRightChild()!=null){
+			toStringPostorder(node.getLeftChild(), "");
+		}
+		return s;
 	}
 
 	public BinarySearchTree getCopyOfTree(){
