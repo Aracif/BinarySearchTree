@@ -21,7 +21,8 @@ extends BinaryTreeBasis<T> {
 	}  // end insert
 
 	public T retrieve(KT searchKey){
-		TreeNode<T> currentNode = root.getLeftChild();
+		TreeNode<T> parentNode = root;
+		TreeNode<T> currentNode = root;
 		boolean notFound = true;
 		int compareValue;
 		while(notFound && currentNode!=null){
@@ -34,21 +35,6 @@ extends BinaryTreeBasis<T> {
 			}
 			else{
 				currentNode = currentNode.getRightChild();
-			}
-		}
-		if(notFound){
-			currentNode = root.getRightChild();
-			while(notFound && currentNode!=null){
-				compareValue = currentNode.getItem().getKey().compareTo(searchKey);
-				if(compareValue==0){
-					notFound = false;
-				}
-				else if(compareValue>0){
-					currentNode = currentNode.getLeftChild();
-				}
-				else{
-					currentNode = currentNode.getRightChild();
-				}
 			}
 		}
 		return currentNode.getItem();

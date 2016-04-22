@@ -17,15 +17,17 @@ public class Driver {
 	public static void main(String[] args) throws NumberFormatException, IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
-		//MBST.insert(new Data("S"));
-		//MBST.insert(new Data("A"));
-		//MBST.insert(new Data("B"));
-		//MBST.insert(new Data("K"));
-		//MBST.insert(new Data("H"));
-		//MBST.insert(new Data("W"));
-		//MBST.insert(new Data("R"));
-		//MBST.insert(new Data("L"));
-		//MBST.insert(new Data("Z"));
+		MBST.insert(new Data("7"));
+		MBST.insert(new Data("5"));
+		MBST.insert(new Data("1"));
+		MBST.insert(new Data("3"));
+		MBST.insert(new Data("6"));
+		MBST.insert(new Data("2"));
+		MBST.insert(new Data("4"));
+		MBST.insert(new Data("0"));
+		MBST.insert(new Data("9"));
+		MBST.insert(new Data("8"));
+
 		
 		while(true){
 			Integer select = Integer.parseInt(read.readLine());
@@ -59,7 +61,7 @@ public class Driver {
 				case 2: 
 						String removeKey = read.readLine();
 						System.out.println("Enter a key to remove: " + removeKey);						
-						MBST.delete(removeKey);
+						MBST.delete(MBST.retrieve(removeKey));
 						System.out.println("The key " + removeKey + " has been removed");
 						break;
 				case 3: 
