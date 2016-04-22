@@ -34,18 +34,31 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 		return level;	
 	}
 
-	//No helper method required, we can use getHeight method
-	//to accomplish this
+
 	public int getSize(){
 		int leftHeight = 0;
 		int rightHeight = 0;
 		if(root.getLeftChild()!=null){
-			leftHeight = getHeight(root.getLeftChild(),0);
+			leftHeight = getSize(root.getLeftChild(),0);
 		}
 		if(root.getRightChild()!=null){
-			rightHeight = getHeight(root.getRightChild(),0);
+			rightHeight = getSize(root.getRightChild(),0);
 		}
 		return leftHeight + rightHeight + 1;
+	}
+	
+	//Get size helper method
+	private int getSize(TreeNode<T> node, int totalNodes){
+		if(node.getLeftChild()==null && node.getRightChild()==null){
+			++totalNodes;
+		}
+		else if(node.getLeftChild()!=null){
+			totalNodes += getSize(node.getLeftChild(), ++totalNodes);
+		}
+		else if(node.getRightChild()!=null){
+			totalNodes += getSize(node.getRightChild(), ++totalNodes);
+		}
+		return totalNodes;
 	}
 	
 
@@ -96,7 +109,7 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 			toStringInorder(node.getLeftChild(),  "");
 		}
 		else if(node.getRightChild()!=null){
-			s += toStringInorder(node.getRightChild(),  " " + (String)node.getItem().getKey() + " ");		
+			s += toStringInorder(node.getRightChild(),  " " + (Integer)node.getItem().getKey() + " ");		
 		}	
 		return s;
 	}

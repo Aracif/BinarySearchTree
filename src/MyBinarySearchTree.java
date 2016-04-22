@@ -36,10 +36,9 @@ extends BinaryTreeBasis<T> {
 				currentNode = currentNode.getRightChild();
 			}
 		}
-		if(currentNode==null){
-			return null;
-		}
-		return currentNode.getItem();
+
+			return currentNode.getItem();
+		
 		//implement iteratively
 	}  // end retrieve
 

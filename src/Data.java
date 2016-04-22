@@ -1,8 +1,8 @@
 
 public class Data extends KeyedItem<String>{
 	
-	public Data(String name){
-		super(name);
+	public Data(String str){
+		super(str);
 	}
 
 }
