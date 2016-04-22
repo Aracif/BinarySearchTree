@@ -9,10 +9,10 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 		}
 		else{
 			if(root.getLeftChild()!=null){
-				leftHeight = getHeight(root.getLeftChild(),0) + 1;
+				leftHeight = getHeight(root, root.getLeftChild(),0) + 1;
 			}
 			if(root.getRightChild()!=null){
-				rightHeight = getHeight(root.getRightChild(),0) + 1;
+				rightHeight = getHeight(root, root.getRightChild(),0) + 1;
 			}
 		}
 		System.out.println("Left Height " + leftHeight);
@@ -21,15 +21,15 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 	}
 	
 	//Get height helper method
-	private int getHeight(TreeNode<T> node, int level){
-		if(node.getLeftChild()==null && node.getRightChild()==null){
+	private int getHeight(TreeNode<T> currentNode,TreeNode<T> parent, int level){
+		if(currentNode.getLeftChild()==null && currentNode.getRightChild()==null){
 			++level;
 		}
-		else if(node.getLeftChild()!=null){
-			level = getHeight(node.getLeftChild(), ++level);
+		else if(currentNode.getLeftChild()!=null){
+			level = getHeight(currentNode.getLeftChild(),currentNode, ++level);			
 		}
-		else if(node.getRightChild()!=null){
-			level = getHeight(node.getRightChild(), ++level);
+		else if(currentNode.getRightChild()!=null){
+			level = getHeight(currentNode.getRightChild(),currentNode, ++level);
 		}
 		return level;	
 	}
