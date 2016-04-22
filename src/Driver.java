@@ -64,7 +64,10 @@ public class Driver {
 				case 6: 
 						
 						break;
-				case 7: break;
+				case 7: 
+					System.out.println("Binary tree contents displayed Pre-Order: " + 
+							MBST.toStringPreorder());
+						break;
 				case 8: break;
 				case 9: break;
 				

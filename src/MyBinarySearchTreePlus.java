@@ -35,26 +35,45 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 	}
 
 	public int getSize(){
-		return getHeight(root.getLeftChild(),0) + getHeight(root.getRightChild(),0) + 1;
+		int leftHeight = 0;
+		int rightHeight = 0;
+		if(root.getLeftChild()!=null){
+			leftHeight = getHeight(root.getLeftChild(),0);
+		}
+		if(root.getRightChild()!=null){
+			rightHeight = getHeight(root.getRightChild(),0);
+		}
+		return leftHeight + rightHeight + 1;
 	}
 	
-//	private int getSize(TreeNode<T> node, int nodeTotal){
-//		if(node.getLeftChild()==null && node.getRightChild()==null){
-//			return ++nodeTotal;
-//		}
-//		else if(node.getLeftChild()!=null){
-//			nodeTotal = getSize(node.getLeftChild(), ++nodeTotal);
-//		}
-//		else if(node.getRightChild()!=null){
-//			nodeTotal = getSize(node.getRightChild(), ++nodeTotal);
-//		}	
-//	}
-
-	public String toStringInorder(){
-		return null;
-	}
 
 	public String toStringPreorder(){
+		String s1 = "";
+		String s2 = "";
+		if(root.getLeftChild()!=null){
+			s1 += toStringPreOrder(root.getLeftChild(), s1);
+		}
+		if(root.getRightChild()!=null){
+			s2 += toStringPreOrder(root.getRightChild(), s2);
+		}
+		
+		return root.getItem().getKey() + s1 + s2;
+	}
+	
+	private String toStringPreOrder(TreeNode<T> node, String s){
+		if(node.getLeftChild()==null && node.getRightChild()==null){
+			s += (String)node.getItem().getKey();
+		}
+		else if(node.getLeftChild()!=null){
+			s += toStringPreOrder(node.getLeftChild(), " " + (String)node.getItem().getKey() + " ");
+		}
+		else if(node.getRightChild()!=null){
+			s += toStringPreOrder(node.getRightChild(), " " + (String)node.getItem().getKey() + " ");
+		}
+		return s;
+	}
+
+	public String toStringInorder(){
 		return null;
 	}
 
