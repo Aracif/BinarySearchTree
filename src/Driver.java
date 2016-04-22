@@ -17,15 +17,15 @@ public class Driver {
 	public static void main(String[] args) throws NumberFormatException, IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
-		MBST.insert(new Data("S"));
-		MBST.insert(new Data("A"));
-		MBST.insert(new Data("B"));
-		MBST.insert(new Data("K"));
-		MBST.insert(new Data("H"));
-		MBST.insert(new Data("W"));
-		MBST.insert(new Data("R"));
-		MBST.insert(new Data("L"));
-		MBST.insert(new Data("Z"));
+		//MBST.insert(new Data("S"));
+		//MBST.insert(new Data("A"));
+		//MBST.insert(new Data("B"));
+		//MBST.insert(new Data("K"));
+		//MBST.insert(new Data("H"));
+		//MBST.insert(new Data("W"));
+		//MBST.insert(new Data("R"));
+		//MBST.insert(new Data("L"));
+		//MBST.insert(new Data("Z"));
 		
 		while(true){
 			Integer select = Integer.parseInt(read.readLine());
@@ -45,7 +45,7 @@ public class Driver {
 				switch(select){			
 				case 1: 
 						String currentKey = read.readLine();
-						System.out.println("Enter key to insert into tree : ");
+						System.out.println("Enter key to insert into tree : " + currentKey);
 						TreeNode<Data> newNode;						
 						if(MBST.root==null){
 							newNode = new TreeNode<Data>(new Data(currentKey));
@@ -58,13 +58,13 @@ public class Driver {
 						break;
 				case 2: 
 						String removeKey = read.readLine();
-						System.out.println("Enter a key to remove: ");						
+						System.out.println("Enter a key to remove: " + removeKey);						
 						MBST.delete(removeKey);
 						System.out.println("The key " + removeKey + " has been removed");
 						break;
 				case 3: 
-						System.out.println("Enter a key to search for: ");
 						String searchKey = read.readLine();
+						System.out.println("Enter a key to search for: " + searchKey);						
 						Data n = MBST.retrieve(searchKey);
 						System.out.println("The key " + n.getKey() + " has been found");
 						break;

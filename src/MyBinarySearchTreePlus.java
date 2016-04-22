@@ -1,63 +1,35 @@
 
 public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparable<? super KT>> extends MyBinarySearchTree<T,KT> implements BSTPInterface{
 
-	public int getHeight(){
-		int leftHeight = 1;
-		int rightHeight = 1;
-		if(root==null){
+	public int getHeight(){			
+			return get_Height(root);
+	}
+		
+	
+	//Get height helper method
+	private int get_Height(TreeNode<T> currentNode){
+		if(currentNode==null){
 			return 0;
 		}
 		else{
-			if(root.getLeftChild()!=null){
-				leftHeight = getHeight(root, root.getLeftChild(),0) + 1;
-			}
-			if(root.getRightChild()!=null){
-				rightHeight = getHeight(root, root.getRightChild(),0) + 1;
-			}
-		}
-		System.out.println("Left Height " + leftHeight);
-		System.out.println("Right Height " + rightHeight);
-		return leftHeight>rightHeight?leftHeight:rightHeight;
-	}
-	
-	//Get height helper method
-	private int getHeight(TreeNode<T> currentNode,TreeNode<T> parent, int level){
-		if(currentNode.getLeftChild()==null && currentNode.getRightChild()==null){
-			++level;
-		}
-		else if(currentNode.getLeftChild()!=null){
-			level = getHeight(currentNode.getLeftChild(),currentNode, ++level);			
-		}
-		else if(currentNode.getRightChild()!=null){
-			level = getHeight(currentNode.getRightChild(),currentNode, ++level);
-		}
-		return level;	
+			int sizeLeft = get_Height(currentNode.getLeftChild());
+			int sizeRight = get_Height(currentNode.getRightChild());
+			return sizeLeft>sizeRight?sizeLeft+1:sizeRight+1;
+		}		
 	}
 
 	public int getSize(){
-		int leftHeight = 0;
-		int rightHeight = 0;
-		if(root.getLeftChild()!=null){
-			leftHeight = getSize(root.getLeftChild(),0);
-		}
-		if(root.getRightChild()!=null){
-			rightHeight = getSize(root.getRightChild(),0);
-		}
-		return leftHeight + rightHeight + 1;
+		return get_Size(root);	
 	}
 	
 	//Get size helper method
-	private int getSize(TreeNode<T> node, int totalNodes){
-		if(node.getLeftChild()==null && node.getRightChild()==null){
-			++totalNodes;
+	private int get_Size(TreeNode<T> currentNode){
+		if(currentNode==null){
+			return 0;
 		}
-		else if(node.getLeftChild()!=null){
-			totalNodes += getSize(node.getLeftChild(), ++totalNodes);
-		}
-		else if(node.getRightChild()!=null){
-			totalNodes += getSize(node.getRightChild(), ++totalNodes);
-		}
-		return totalNodes;
+		else{
+			return get_Size(currentNode.getLeftChild())+get_Size(currentNode.getRightChild())+1;								
+		}		
 	}
 	
 
