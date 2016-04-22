@@ -66,7 +66,7 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 			s = toStringInorder(currentNode.getLeftChild());
 			s += currentNode.getItem().getKey() + " ";
 			s2 = toStringInorder(currentNode.getRightChild());
-			return s + s2 ;
+			return s + s2;
 		}		
 	}
 

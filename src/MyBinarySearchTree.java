@@ -21,7 +21,7 @@ extends BinaryTreeBasis<T> {
 	}  // end insert
 
 	public T retrieve(KT searchKey){
-		TreeNode<T> parentNode = root;
+		
 		TreeNode<T> currentNode = root;
 		boolean notFound = true;
 		int compareValue;

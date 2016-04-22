@@ -17,16 +17,16 @@ public class Driver {
 	public static void main(String[] args) throws NumberFormatException, IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
-		MBST.insert(new Data("7"));
-		MBST.insert(new Data("5"));
-		MBST.insert(new Data("1"));
-		MBST.insert(new Data("3"));
-		MBST.insert(new Data("6"));
-		MBST.insert(new Data("2"));
-		MBST.insert(new Data("4"));
-		MBST.insert(new Data("0"));
-		MBST.insert(new Data("9"));
-		MBST.insert(new Data("8"));
+//		MBST.insert(new Data("7"));
+//		MBST.insert(new Data("5"));
+//		MBST.insert(new Data("1"));
+//		MBST.insert(new Data("3"));
+//		MBST.insert(new Data("6"));
+//		MBST.insert(new Data("2"));
+//		MBST.insert(new Data("4"));
+//		MBST.insert(new Data("0"));
+//		MBST.insert(new Data("9"));
+//		MBST.insert(new Data("8"));
 
 		
 		while(true){
