@@ -17,16 +17,16 @@ public class Driver {
 	public static void main(String[] args) throws NumberFormatException, IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		MyBinarySearchTreePlus<Data,String> MBST = new MyBinarySearchTreePlus();
-//		MBST.insert(new Data("7"));
-//		MBST.insert(new Data("5"));
-//		MBST.insert(new Data("1"));
-//		MBST.insert(new Data("3"));
-//		MBST.insert(new Data("6"));
-//		MBST.insert(new Data("2"));
-//		MBST.insert(new Data("4"));
-//		MBST.insert(new Data("0"));
-//		MBST.insert(new Data("9"));
-//		MBST.insert(new Data("8"));
+		MBST.insert(new Data("7"));
+		MBST.insert(new Data("5"));
+		MBST.insert(new Data("1"));
+		MBST.insert(new Data("3"));
+		MBST.insert(new Data("6"));
+		MBST.insert(new Data("2"));
+		MBST.insert(new Data("4"));
+		MBST.insert(new Data("0"));
+		MBST.insert(new Data("9"));
+		MBST.insert(new Data("8"));
 
 		
 		while(true){
@@ -93,7 +93,20 @@ public class Driver {
 						MBST.toStringPostorder());
 						break;
 						
-				case 9: 						
+				case 9: 
+						MyBinarySearchTreePlus<Data,String> mbstCopy = MBST.getCopyOfTree();											
+						System.out.println("Tree copy created.");
+						System.out.println("Delete key '8' from tree");
+						mbstCopy.delete("8");
+						System.out.println("Tree copy in order: " + mbstCopy.toStringInorder());
+						System.out.println("Original tree in order: " + MBST.toStringInorder());
+						System.out.println("Key A added");
+						System.out.println("Key B added");
+						mbstCopy.insert(new Data("A"));
+						mbstCopy.insert(new Data("B"));
+						System.out.println("Tree copy in order: " + mbstCopy.toStringInorder());
+						System.out.println("Original tree in order: " + MBST.toStringInorder());
+						
 						break;
 				
 				case 10: 

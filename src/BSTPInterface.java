@@ -18,7 +18,7 @@ public String toStringPostorder();
 // returns String representation of Tree with items in Postorder
 // (recursive implementation)
   
-public BinarySearchTree getCopyOfTree();
+public MyBinarySearchTreePlus<Data, String> getCopyOfTree();
 // returns a new tree containing a copy of the original tree 
 // with the same structure. Note: the new tree should not have
 // any shared nodes with the original.(recursive implementation)

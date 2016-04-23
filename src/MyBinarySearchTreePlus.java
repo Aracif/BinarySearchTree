@@ -90,8 +90,19 @@ public class MyBinarySearchTreePlus <T extends KeyedItem<KT>,KT extends Comparab
 		}
 	}
 
-	public BinarySearchTree getCopyOfTree(){
-		return null;
+	public MyBinarySearchTreePlus<Data,String> getCopyOfTree(){
+		return getCopyOf_Tree(root, new MyBinarySearchTreePlus<Data,String>());
 	}
-
+	
+	private MyBinarySearchTreePlus<Data,String> getCopyOf_Tree(TreeNode<T> currentNode, MyBinarySearchTreePlus<Data,String> mbst){
+		if(currentNode==null){
+			return null;
+		}
+		else{
+			mbst.insert(new Data((String)currentNode.getItem().getKey()));					
+			getCopyOf_Tree(currentNode.getLeftChild(), mbst);
+			getCopyOf_Tree(currentNode.getRightChild(), mbst);		
+		}		
+		return mbst;	
+	}
 }
